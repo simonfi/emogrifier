@@ -77,6 +77,24 @@
       <code>$property</code>
     </MixedArgumentTypeCoercion>
   </file>
+  <file src="src/Utilities/CssConcatenator.php">
+    <DocblockTypeContradiction occurrences="1">
+      <code>$lastMediaRule instanceof \stdClass</code>
+    </DocblockTypeContradiction>
+    <InvalidArgument occurrences="1">
+      <code>$ruleBlocks</code>
+    </InvalidArgument>
+    <InvalidReturnStatement occurrences="1">
+      <code>$lastMediaRule</code>
+    </InvalidReturnStatement>
+    <RedundantCastGivenDocblockType occurrences="2">
+      <code>(array)$mediaRule-&gt;ruleBlocks</code>
+      <code>(string)$mediaRule-&gt;media</code>
+    </RedundantCastGivenDocblockType>
+    <UnnecessaryVarAnnotation occurrences="1">
+      <code>string</code>
+    </UnnecessaryVarAnnotation>
+  </file>
   <file src="tests/Unit/CssInlinerTest.php">
     <DeprecatedMethod occurrences="2">
       <code>self::assertNotRegExp('/&lt;body&gt;.*&lt;style/s', $subject-&gt;render())</code>
