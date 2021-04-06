@@ -40,7 +40,9 @@
     <rule ref="Squiz.Commenting.EmptyCatchComment"/>
     <rule ref="Squiz.Commenting.FunctionComment">
         <!-- Allow no comment for self-describing parameter and exception class names. -->
+<!--        <exclude name="Squiz.Commenting.FunctionComment.MissingFunctionComment"/>-->
         <exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
         <exclude name="Squiz.Commenting.FunctionComment.EmptyThrows"/>
         <!-- Allow "int" rather than "integer", etc., in PHPDoc. -->
         <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/>
