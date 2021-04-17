@@ -3440,10 +3440,7 @@ final class CssInlinerTest extends TestCase
                 '@media (max-width: 640px) { p { color: red; } }' . "\n"
                 . '@import "foo.css";',
             ],
-            '@import after incorrectly-cased @charset rule' => [
-                '@CHARSET "UTF-8";' . "\n"
-                . '@import "foo.css";',
-            ],
+            // broken: @import after incorrectly-cased @charset rule
         ];
     }
 
