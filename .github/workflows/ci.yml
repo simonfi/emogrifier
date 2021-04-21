@@ -91,7 +91,7 @@ jobs:
 
     runs-on: ubuntu-20.04
 
-    needs: [php-lint, composer-validate]
+    needs: [ php-lint, composer-validate ]
 
     strategy:
       matrix:
@@ -133,7 +133,7 @@ jobs:
 
     runs-on: ubuntu-20.04
 
-    needs: [php-lint, composer-validate]
+    needs: [ php-lint, composer-validate ]
 
     strategy:
       matrix:
