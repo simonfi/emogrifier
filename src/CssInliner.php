@@ -117,8 +117,21 @@ class CssInliner extends AbstractHtmlProcessor
      *
      * @var bool
      */
-    private $isStyleBlocksParsingEnabled = true;
+    private $isStyleBlocksParsingEnabled = true; 
 
+    /**
+     * Determines whether the `<style>` blocks in the HTML passed to this class should be removed.
+     *
+     * If set to true, the `<style>` blocks will be removed from the HTML if also $isStyleBlocksParsingEnabled is set
+     * to true.
+     *
+     * If set to false, the `<style>` blocks will be left as they are in the HTML, even if $isStyleBlocksParsingEnabled
+     * is enabled.
+     *
+     * @var bool
+     */
+    private $isStyleBlocksRemovalEnabled = true;
+    
     /**
      * For calculating selector precedence order.
      * Keys are a regular expression part to match before a CSS name.
@@ -237,6 +250,18 @@ class CssInliner extends AbstractHtmlProcessor
         $this->isStyleBlocksParsingEnabled = false;
 
         return $this;
+    }
+
+    /**
+     * Disables the removal of `<style>` blocks even if parsing of them is enabled.
+     *
+     * @return self fluent interface
+     */
+    public function disableStyleBlocksRemoval(): self
+    {
+    	$this->isStyleBlocksRemovalEnabled = false;
+    	
+    	return $this;
     }
 
     /**
@@ -495,7 +520,7 @@ class CssInliner extends AbstractHtmlProcessor
         foreach ($styleNodes as $styleNode) {
             $css .= "\n\n" . $styleNode->nodeValue;
             $parentNode = $styleNode->parentNode;
-            if ($parentNode instanceof \DOMNode) {
+            if ($this->isStyleBlocksRemovalEnabled && $parentNode instanceof \DOMNode) {
                 $parentNode->removeChild($styleNode);
             }
         }
