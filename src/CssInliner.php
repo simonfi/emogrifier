@@ -223,7 +223,10 @@ class CssInliner extends AbstractHtmlProcessor
         $this->removeImportantAnnotationFromAllInlineStyles();
 
         $this->determineMatchingUninlinableCssRules($cssRules['uninlinable']);
-        $this->copyUninlinableCssToStyleNode($parsedCss);
+        
+        if ($this->isStyleBlocksRemovalEnabled) {
+            $this->copyUninlinableCssToStyleNode($parsedCss);
+        }
 
         return $this;
     }
